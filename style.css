@@ -55,15 +55,13 @@ body {
 .loading {
     width: 100vw;
     height: 80vh;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
 
-
 #loading-effect {
     width: 44px;
-    /* margin-left: 50%; */
 }
 
 #movieNotFound {

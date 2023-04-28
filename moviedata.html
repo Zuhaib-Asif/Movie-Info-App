@@ -22,14 +22,21 @@
             <p class="movieWriter textInfo"></p>
             <p class="moviePlot textInfo"></p>
         </div>
+
+    </div>
+    <div class="loading">
+        <img id="loading-effect" src="loading_effect.gif" alt="">
     </div>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
+        const loading = document.querySelector(".loading");
         const movieId = urlParams.get('id');
+        loading.style.display = "flex";
         fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=235c1909`)
             .then(response => response.json())
             .then(data => {
                 console.log(data.Title);
+                loading.style.display = "none";
                 document.title = `${data.Title}`;
                 const movieDetailImg = document.querySelector('#movieDetailImg');
                 const movieTitle = document.querySelector('.movieTitle');
@@ -53,7 +60,6 @@
                 movieActor.innerHTML = `<span class="titleinfo">Actors:</span> ${data.Actors}`;
                 movieWriter.innerHTML = `<span class="titleinfo">Writer:</span> ${data.Writer}`;
                 moviePlot.innerHTML = `<span class="titleinfo">Plot:</span> ${data.Plot}`;
-
             });
     </script>
 </body>

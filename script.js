@@ -2,16 +2,18 @@ const key = "235c1909";
 const url = "https://www.omdbapi.com/";
 const movieList = document.getElementById("movieList");
 const searchBtn = document.getElementById("searchBtn");
+const loading = document.querySelector(".loading");
 searchBtn.addEventListener("click", () => {
-  movieList.textContent = "hello";
-
+  movieList.textContent = "";
+  document.getElementById("movieNotFound").style.display = "none";
+  loading.style.display = "flex";
   const userSearch = document.getElementById("userSearch").value;
   fetch(`${url}?s=${userSearch}&apikey=${key}`)
     .then((res) => {
+      loading.style.display = "none";
       return res.json();
     })
     .then((data) => {
-      movieList.textContent = "";
       data.Search.forEach((element) => {
         document.getElementById("movieNotFound").style.display = "none";
         const movies = document.createElement("div");
