@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Info</title>
+    <link rel="stylesheet" href="moviedata.css">
+</head>
+
+<body>
+    <div class="movie-details">
+        <img src="" alt="Poster Not Found" id="movieDetailImg">
+        <div>
+            <p class="movieTitle textInfo"></p>
+            <p class="movieType textInfo"></p>
+            <p class="movieRelease textInfo"></p>
+            <p class="movieLanguage textInfo"></p>
+            <p class="movieRating textInfo"></p>
+            <p class="movieActor textInfo"></p>
+            <p class="movieWriter textInfo"></p>
+            <p class="moviePlot textInfo"></p>
+        </div>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const movieId = urlParams.get('id');
+        fetch(`https://www.omdbapi.com/?i=${movieId}&apikey=235c1909`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.Title);
+                document.title = `${data.Title}`;
+                const movieDetailImg = document.querySelector('#movieDetailImg');
+                const movieTitle = document.querySelector('.movieTitle');
+                const movieType = document.querySelector('.movieType');
+                const movieRelease = document.querySelector('.movieRelease');
+                const movieLanguage = document.querySelector('.movieLanguage');
+                const movieRating = document.querySelector('.movieRating');
+                const movieActor = document.querySelector('.movieActor');
+                const movieWriter = document.querySelector('.movieWriter');
+                const moviePlot = document.querySelector('.moviePlot');
+                movieDetailImg.src = data.Poster;
+                movieTitle.innerHTML = `<span class="titleinfo">Title:</span> ${data.Title}`;
+                movieType.innerHTML = `<span class="titleinfo">Type:</span> ${data.Type}`;
+                if (data.Released === "N/A") {
+                    movieRelease.innerHTML = `<span class="titleinfo">Release Date:</span> ${data.Year}`;
+                } else {
+                    movieRelease.innerHTML = `<span class="titleinfo">Release Date:</span> ${data.Released}`;
+                }
+                movieLanguage.innerHTML = `<span class="titleinfo">Language:</span> ${data.Language}`;
+                movieRating.innerHTML = `<span class="titleinfo">Rating:</span> ${data.Ratings[0].Value}`;
+                movieActor.innerHTML = `<span class="titleinfo">Actors:</span> ${data.Actors}`;
+                movieWriter.innerHTML = `<span class="titleinfo">Writer:</span> ${data.Writer}`;
+                moviePlot.innerHTML = `<span class="titleinfo">Plot:</span> ${data.Plot}`;
+
+            });
+    </script>
+</body>
+
+</html>

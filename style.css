@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-color: #000;
+}
+
+.container {
+    background: black;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+}
+
+.container input,
+.container button {
+    padding: 7px 9px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    font-weight: bolder;
+}
+
+#userSearch {
+    width: 60%;
+}
+
+#searchBtn {
+    background-color: #D4AF37;
+    cursor: pointer;
+}
+
+#searchBtn:hover {
+    background-color: black;
+    color: #D4AF37;
+}
+
+.moviecard {
+    background-color: #03001C;
+    width: 30%;
+    height: 440px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.loading {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#loading-effect {
+    width: 44px;
+    /* margin-left: 50%; */
+}
+
+#movieNotFound {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    display: none;
+}
+
+#movieList {
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.moviecard img {
+    width: 240px;
+    height: 320px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+}
+
+#movieTitle {
+    font-size: 18px;
+    text-align: center;
+    color: white;
+}
+
+.detailBtn {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 3px 6px;
+    margin-bottom: 8px;
+    color: black;
+    background-color: #D4AF37;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+@media(max-width:768px) {
+    .moviecard img {
+        width: 180px;
+        height: 280px;
+    }
+}
+
+@media(max-width:652px) {
+    .moviecard {
+        width: 47%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .moviecard img {
+        width: 180px;
+    }
+
+    .container input,
+    .container button {
+        font-size: 16px;
+    }
+}
+
+@media(max-width:482px) {
+    .moviecard {
+        width: 90%;
+        height: 400px;
+    }
+
+    .moviecard img {
+        width: 200px;
+    }
+}
